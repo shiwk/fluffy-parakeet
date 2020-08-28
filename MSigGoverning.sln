@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Launcher", "Launcher\Launcher.csproj", "{84CB1334-72F0-4DA5-B486-2046610D374D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Governing.AElf", "Governing.AElf\Governing.AElf.csproj", "{77156CFE-E336-4D28-8AFE-2BC59FFE6855}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Governing.Ethereum", "Governing.Ethereum\Governing.Ethereum.csproj", "{9024AEF1-83DD-4607-BE20-B763AFB1F80F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Governing", "Governing\Governing.csproj", "{F373893D-D8C4-4820-A43E-5F42D2FBD033}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlockChainKit.AElf", "BlockChainKit.AElf\BlockChainKit.AElf.csproj", "{540522EF-21F8-4E63-877D-7DE13141B20A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlockChainKit.Ethereum", "BlockChainKit.Ethereum\BlockChainKit.Ethereum.csproj", "{ED23EB5D-34DA-4696-A256-41DC3C2ACDDC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BlockChinKit", "BlockChinKit", "{6B5B86C1-99B9-4207-9622-51C5AEC83A29}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlockChainKit.Common", "BlockChainKit.Common\BlockChainKit.Common.csproj", "{C2F32B93-AA6C-4813-9A2C-BFF2DF72CCA8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{84CB1334-72F0-4DA5-B486-2046610D374D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84CB1334-72F0-4DA5-B486-2046610D374D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84CB1334-72F0-4DA5-B486-2046610D374D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84CB1334-72F0-4DA5-B486-2046610D374D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77156CFE-E336-4D28-8AFE-2BC59FFE6855}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77156CFE-E336-4D28-8AFE-2BC59FFE6855}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77156CFE-E336-4D28-8AFE-2BC59FFE6855}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77156CFE-E336-4D28-8AFE-2BC59FFE6855}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9024AEF1-83DD-4607-BE20-B763AFB1F80F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9024AEF1-83DD-4607-BE20-B763AFB1F80F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9024AEF1-83DD-4607-BE20-B763AFB1F80F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9024AEF1-83DD-4607-BE20-B763AFB1F80F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F373893D-D8C4-4820-A43E-5F42D2FBD033}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F373893D-D8C4-4820-A43E-5F42D2FBD033}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F373893D-D8C4-4820-A43E-5F42D2FBD033}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F373893D-D8C4-4820-A43E-5F42D2FBD033}.Release|Any CPU.Build.0 = Release|Any CPU
+		{540522EF-21F8-4E63-877D-7DE13141B20A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{540522EF-21F8-4E63-877D-7DE13141B20A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{540522EF-21F8-4E63-877D-7DE13141B20A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{540522EF-21F8-4E63-877D-7DE13141B20A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED23EB5D-34DA-4696-A256-41DC3C2ACDDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED23EB5D-34DA-4696-A256-41DC3C2ACDDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED23EB5D-34DA-4696-A256-41DC3C2ACDDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED23EB5D-34DA-4696-A256-41DC3C2ACDDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2F32B93-AA6C-4813-9A2C-BFF2DF72CCA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2F32B93-AA6C-4813-9A2C-BFF2DF72CCA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2F32B93-AA6C-4813-9A2C-BFF2DF72CCA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2F32B93-AA6C-4813-9A2C-BFF2DF72CCA8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{540522EF-21F8-4E63-877D-7DE13141B20A} = {6B5B86C1-99B9-4207-9622-51C5AEC83A29}
+		{ED23EB5D-34DA-4696-A256-41DC3C2ACDDC} = {6B5B86C1-99B9-4207-9622-51C5AEC83A29}
+		{C2F32B93-AA6C-4813-9A2C-BFF2DF72CCA8} = {6B5B86C1-99B9-4207-9622-51C5AEC83A29}
+	EndGlobalSection
+EndGlobal
