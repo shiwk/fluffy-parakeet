@@ -4,6 +4,7 @@ using Nethereum.Contracts;
 
 namespace Governing.Ethereum
 {
+    [Function("createProposal", "uint256")]
     public class ProposalCreationFunctionMessage : FunctionMessage
     {
         [Parameter("address", "_to", 1)]

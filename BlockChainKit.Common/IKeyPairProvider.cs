@@ -1,7 +1,6 @@
 using System.Threading.Tasks;
 using AElf.Cryptography.ECDSA;
 using AElf.OS;
-using AElf.OS.Account.Infrastructure;
 using Microsoft.Extensions.Options;
 
 namespace BlockChainKit.Common
@@ -12,7 +11,7 @@ namespace BlockChainKit.Common
         public Task<byte[]> GetPrivateKeyAsync();
     }
 
-    class KeyPairProvider : IKeyPairProvider
+    public class KeyPairProvider : IKeyPairProvider
     {
         private readonly AccountOptions _accountOptions;
         private readonly IKeyStore _keyStore;
@@ -25,26 +24,20 @@ namespace BlockChainKit.Common
 
         public async Task<byte[]> GetPublicKeyAsync()
         {
-            return (await ReadKeyPairAsync()).PublicKey;
+            var keyPair = await GetKeyPairAsync();
+            return keyPair.PublicKey;
         }
 
         public async Task<byte[]> GetPrivateKeyAsync()
         {
-            return (await ReadKeyPairAsync()).PrivateKey;
+            var keyPair = await GetKeyPairAsync();
+            return keyPair.PrivateKey;
         }
 
-        private async Task<ECKeyPair> ReadKeyPairAsync()
+        private async Task<ECKeyPair> GetKeyPairAsync()
         {
-            var nodeAccount = _accountOptions.NodeAccount;
-            var nodePassword = _accountOptions.NodeAccountPassword ?? string.Empty;
-            var accountKeyPair = _keyStore.GetAccountKeyPair(nodeAccount);
-            if (accountKeyPair == null)
-            {
-                await _keyStore.UnlockAccountAsync(nodeAccount, nodePassword);
-                accountKeyPair = _keyStore.GetAccountKeyPair(nodeAccount);
-            }
-
-            return accountKeyPair;
+            return await _keyStore.GetAccountKeyPairAsync(_accountOptions.NodeAccount,
+                _accountOptions.NodeAccountPassword);
         }
     }
 }

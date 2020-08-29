@@ -30,7 +30,7 @@ namespace Governing.AElf
             if (libHeight <= knownHeight)
                 return res;
 
-            for (long height = knownHeight + 1; height <= knownHeight; height++)
+            for (long height = knownHeight + 1; height <= libHeight; height++)
             {
                 var blockDto = await _aelfChainKit.GetBlockByHeightAsync(height);
                 res.Add(blockDto);

@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using AElf;
@@ -55,7 +56,7 @@ namespace Governing
             if (interestedEvents == null || interestedEvents.Count == 0)
                 return;
 
-            Logger.LogDebug($"Found event {string.Join(",", interestedEvents.Select(e => e.Name).ToList())}.");
+            Logger.LogInformation($"Found event {string.Join(",", interestedEvents.Select(e => e.Name).ToList())}.");
             
             foreach (var logEvent in interestedEvents)
             {

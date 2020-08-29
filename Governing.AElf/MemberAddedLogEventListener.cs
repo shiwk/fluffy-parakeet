@@ -4,6 +4,7 @@ using AElf.CSharp.Core.Extension;
 using AElf.Kernel;
 using AElf.Types;
 using BlockChainKit.AElf;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Volo.Abp.DependencyInjection;
 
@@ -11,6 +12,7 @@ namespace Governing.AElf
 {
     class MemberAddedLogEventListener : LogEventListenerBase<MemberAdded>, ITransientDependency
     {
+        public ILogger<MemberAddedLogEventListener> Logger { get; set; }
         public MemberAddedLogEventListener(IOptionsSnapshot<AElfEventListeningOptions> optionsSnapshot,
             IAElfChainKit aelfChainKit) : base(optionsSnapshot.Value, aelfChainKit)
         {
@@ -28,7 +30,11 @@ namespace Governing.AElf
         protected override async Task<bool> IsInterestedEvent(LogEvent log)
         {
             var memberAdded = MemberAdded.Parser.ParseFrom(log.NonIndexed);
-            return memberAdded.Member == await AElfChainKit.GetAccountAsync();
+            var account = await AElfChainKit.GetAccountAsync();
+            var result = memberAdded.Member == account;
+            if (!result)
+                Logger.LogTrace($"Found new member {memberAdded.Member}, not mine {account}");
+            return result;
         }
     }
 }

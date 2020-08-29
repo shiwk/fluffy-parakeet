@@ -1,7 +1,11 @@
+using System;
 using System.Threading.Tasks;
 using BlockChainKit.Common;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Nethereum.Contracts;
+using Nethereum.Hex.HexTypes;
+using Nethereum.Util;
 using Nethereum.Web3;
 using Nethereum.Web3.Accounts;
 
@@ -19,6 +23,7 @@ namespace BlockChainKit.Ethereum
         private readonly IKeyPairProvider _keyPairProvider;
         private readonly EthereumProviderOptions _ethereumProviderOptions;
 
+        public ILogger<EthereumChainKit> Logger { get; set; }
 
         public EthereumChainKit(IOptionsSnapshot<EthereumProviderOptions> optionsSnapshot,
             IKeyPairProvider keyPairProvider)
@@ -36,9 +41,22 @@ namespace BlockChainKit.Ethereum
 
         public async Task<string> SendAsync<T>(string contractAddress, T functionMessage) where T : FunctionMessage, new()
         {
-            var web3 = await GetOrGenerateWeb3Instance();
-            var handler = web3.Eth.GetContractTransactionHandler<T>();
-            return await handler.SendRequestAsync(contractAddress, functionMessage);
+            try
+            {
+                var web3 = await GetOrGenerateWeb3Instance();
+                var handler = web3.Eth.GetContractTransactionHandler<T>();
+                var gas = await handler.EstimateGasAsync(contractAddress, functionMessage);
+                // Web3.Convert.
+                var gasPrice = new HexBigInteger(UnitConversion.Convert.ToWei(100, UnitConversion.EthUnit.Gwei));
+                functionMessage.Gas = gas;
+                functionMessage.GasPrice = gasPrice;
+                return await handler.SendRequestAsync(contractAddress, functionMessage);
+            }
+            catch (Exception e)
+            {
+                Logger.LogError(e.Message, e);
+                throw;
+            }
         }
 
         private async Task<Web3> GetOrGenerateWeb3Instance()

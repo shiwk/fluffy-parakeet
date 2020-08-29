@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using AElf.Client.Dto;
 using AElf.Types;
 using BlockChainKit.AElf;
+using Microsoft.Extensions.Logging;
 
 namespace Governing.AElf
 {
@@ -16,7 +17,8 @@ namespace Governing.AElf
     {
         private readonly IAElfChainKit _aelfChainKit;
         private readonly List<ILogEventListener> _logEventListeners;
-        
+        public ILogger<AElfLogEventListeningService> Logger { get; set; }
+
         public AElfLogEventListeningService(IAElfChainKit aelfChainKit, IEnumerable<ILogEventListener> logEventListeners)
         {
             _aelfChainKit = aelfChainKit;
@@ -30,6 +32,7 @@ namespace Governing.AElf
             if (listeners.Count == 0)
                 return results;
             
+            Logger.LogInformation($"Found in block {blockDto.Header.Height}");
             var txResults = await _aelfChainKit.GetTransactionResultsByBlockHashAsync(Hash.LoadFromHex(blockDto.BlockHash));
             
             foreach (var logEventListener in listeners)

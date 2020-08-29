@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 
 namespace Governing.Ethereum
 {
@@ -12,6 +13,7 @@ namespace Governing.Ethereum
     class EthereumActionService : IEthereumActionService
     {
         private readonly List<IEthereumActionProcessor> _ethereumActionProcessors;
+        public ILogger<EthereumActionService> Logger { get; set; }
 
         public EthereumActionService(IEnumerable<IEthereumActionProcessor> ethereumActionProviders)
         {

@@ -14,6 +14,7 @@ namespace Governing.Ethereum
             Configure<EthereumMSigContractOptions>(configuration.GetSection("EthereumMSigContract"));
 
             context.Services.AddTransient<IEthereumActionService, EthereumActionService>();
+            context.Services.AddTransient<IEthereumActionProcessor, MemberAddedActionProcessor>();
         }
     }
 }

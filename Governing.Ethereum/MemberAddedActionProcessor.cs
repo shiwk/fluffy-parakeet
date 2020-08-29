@@ -42,7 +42,7 @@ namespace Governing.Ethereum
 
             var response =
                 await _ethereumChainKit.SendAsync(_ethereumMSigContractOptions.ContractAddress, proposalCreationMessage);
-            Logger.LogDebug($"Processing result: {response}");
+            Logger.LogInformation($"MemberAdded Processing response: {response}");
         }
     }
     

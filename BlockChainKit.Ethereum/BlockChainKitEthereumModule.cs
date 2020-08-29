@@ -6,11 +6,13 @@ using Volo.Abp.Modularity;
 
 namespace BlockChainKit.Ethereum
 {
-    [DependsOn(typeof(OSAElfModule), typeof(BlockChainKitModule))]
+    [DependsOn(typeof(BlockChainKitModule))]
     public class BlockChainKitEthereumModule : AElfModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
+            Configure<AccountOptions>(context.Services.GetConfiguration().GetSection("Account"));
+
             var configuration = context.Services.GetConfiguration();
             Configure<EthereumProviderOptions>(configuration.GetSection("EthereumProvider"));
             

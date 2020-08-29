@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AElf.Client.Dto;
@@ -39,7 +40,6 @@ namespace BlockChainKit.AElf
 
         public async Task<long> GetChainLibHeightAsync()
         {
-            Logger.LogDebug($"ISCONNECTED: {await _aelfClient.IsConnected()}");
             return (await _aelfClient.GetChainStatusAsync()).LastIrreversibleBlockHeight;
         }
 
